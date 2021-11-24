@@ -1,4 +1,8 @@
 [build]
   command = "npm run build"
   publish = "build"
-  node_bundler = "esbuild"
+
+[build.environment]
+  # SvelteKit requires Node 14+, but Netlify uses Node 12 by default
+  # https://docs.netlify.com/functions/build-with-javascript/?#runtime-settings
+  AWS_LAMBDA_JS_RUNTIME = "nodejs14.x"
